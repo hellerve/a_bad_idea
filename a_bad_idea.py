@@ -16,11 +16,11 @@ class Finder:
     @classmethod
     def find_module(cls, fullname, path):
         for dirname in sys.path:
-            filename = os.path.join(dirname, fullname)
-            for filename in [filename, filename + ".py"]:
+            basename = os.path.join(dirname, fullname)
+            for extension in LANGS.keys():
+                filename = "{}.{}".format(basename, extension)
                 if os.path.exists(filename) and not os.path.isdir(filename):
                     lang = _get_lang(filename)
-                    print(lang)
                     if lang:
                         return LangLoader(filename, lang)
 
@@ -31,7 +31,6 @@ class LangLoader:
         self.lang = lang
 
     def load_module(self, fullname):
-        print(fullname)
         if fullname in sys.modules:
             mod = sys.modules[fullname]
         else:
@@ -50,7 +49,6 @@ def _get_code(filename):
 def _get_lang(filename):
     with open(filename) as f:
         first_line = f.readline()
-    print(first_line)
     if first_line.startswith("#lang "):
         return first_line.split("#lang ")[1][:-1]
 
