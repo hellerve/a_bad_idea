@@ -20,7 +20,7 @@ add_implementation("mylanguage", my_language_fun)
 The loaded module will then have a `value` property that
 you can read out. Because that is not hacky at all.
 
-For an example, look at [the JSON example]().
+For an example, look at [the JSON example](https://github.com/hellerve/a_bad_idea/blob/master/examples/json_lang.py).
 
 <hr/>
 
