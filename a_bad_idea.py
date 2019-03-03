@@ -38,7 +38,7 @@ class LangLoader:
             sys.modules[fullname] = mod
         mod.__file__ = self.filename
         mod.__loader__ = self
-        mod.value = LANGS[self.lang](_get_code(self.filename))
+        LANGS[self.lang](_get_code(self.filename), mod)
         return mod
 
 def _get_code(filename):
