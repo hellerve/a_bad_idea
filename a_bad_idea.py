@@ -21,7 +21,7 @@ class Finder:
                 filename = "{}.{}".format(basename, extension)
                 if os.path.exists(filename) and not os.path.isdir(filename):
                     lang = _get_lang(filename)
-                    if lang:
+                    if lang and lang == extension:
                         return LangLoader(filename, lang)
 
 class LangLoader:
@@ -50,6 +50,7 @@ def _get_lang(filename):
     with open(filename) as f:
         first_line = f.readline()
     if first_line.startswith("#lang "):
-        return first_line.split("#lang ")[1][:-1]
+        words = first_line.split(" ")
+        return " ".join(words[1:])[:-1]
 
 _install_importer()
