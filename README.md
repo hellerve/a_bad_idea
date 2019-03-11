@@ -1,6 +1,6 @@
 # a\_bad\_idea
 
-\#langs for Python.
+\#langs for Python. Check out [my blog post](https://blog.veitheller.de/A_Bad_Idea.html)!
 
 ## Installation
 
